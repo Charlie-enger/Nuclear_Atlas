@@ -139,6 +139,42 @@ export interface Pipeline {
   orise_reference: OriseReference;
 }
 
+export interface MetroWorkforce {
+  code: string;
+  name: string;
+  lat: number;
+  lng: number;
+  ne_employment: number | null;
+  ne_mean_wage: number | null;
+  ne_location_quotient: number | null;
+  tech_employment: number | null;
+  anchor: string | null;
+  suppressed: boolean;
+}
+
+export interface TrainingSite {
+  id: string;
+  name: string;
+  type: string;
+  city: string;
+  state: string;
+  lat: number;
+  lng: number;
+  credentials: string[];
+  annual_completers: number | null;
+  partners: string[];
+  delivery: string;
+  website: string;
+}
+
+export interface TechnicianPipeline {
+  civilian_annual_completers: number;
+  navy_annual_trainees: number;
+  apprenticeship_annual: number;
+  annual_technician_openings: number;
+  site_count: number;
+}
+
 export interface Workforce {
   source: string;
   data_year: number | null;
@@ -151,4 +187,9 @@ export interface Workforce {
   pipeline: Pipeline;
   states: StateWorkforce[];
   employers: Employer[];
+  metros: MetroWorkforce[];
+  metro_source: string;
+  metro_fetched_at: string;
+  training_sites: TrainingSite[];
+  technician_pipeline: TechnicianPipeline;
 }

@@ -1,0 +1,170 @@
+[
+ {
+  "code": "0013820",
+  "name": "Birmingham, AL",
+  "lat": 33.462372,
+  "lng": -86.814338
+ },
+ {
+  "code": "0026620",
+  "name": "Huntsville, AL",
+  "lat": 34.783262,
+  "lng": -86.734871
+ },
+ {
+  "code": "0047900",
+  "name": "Washington-Arlington-Alexandria, DC-VA-MD-WV",
+  "lat": 38.829787,
+  "lng": -77.495684
+ },
+ {
+  "code": "0033100",
+  "name": "Miami-Fort Lauderdale-West Palm Beach, FL",
+  "lat": 26.101828,
+  "lng": -80.478755
+ },
+ {
+  "code": "0012060",
+  "name": "Atlanta-Sandy Springs-Roswell, GA",
+  "lat": 33.732402,
+  "lng": -84.392848
+ },
+ {
+  "code": "0012260",
+  "name": "Augusta-Richmond County, GA-SC",
+  "lat": 33.460371,
+  "lng": -81.982833
+ },
+ {
+  "code": "0026820",
+  "name": "Idaho Falls, ID",
+  "lat": 43.620423,
+  "lng": -112.420919
+ },
+ {
+  "code": "0016980",
+  "name": "Chicago-Naperville-Elgin, IL-IN",
+  "lat": 41.75878,
+  "lng": -87.841887
+ },
+ {
+  "code": "0038860",
+  "name": "Portland-South Portland, ME",
+  "lat": 43.651417,
+  "lng": -70.418375
+ },
+ {
+  "code": "0014460",
+  "name": "Boston-Cambridge-Newton, MA-NH",
+  "lat": 42.517606,
+  "lng": -71.021993
+ },
+ {
+  "code": "0033780",
+  "name": "Monroe, MI",
+  "lat": 41.916097,
+  "lng": -83.487106
+ },
+ {
+  "code": "0035620",
+  "name": "New York-Newark-Jersey City, NY-NJ",
+  "lat": 40.735425,
+  "lng": -73.80773
+ },
+ {
+  "code": "0045060",
+  "name": "Syracuse, NY",
+  "lat": 43.006516,
+  "lng": -76.196134
+ },
+ {
+  "code": "0016740",
+  "name": "Charlotte-Concord-Gastonia, NC-SC",
+  "lat": 35.166342,
+  "lng": -80.797285
+ },
+ {
+  "code": "0039580",
+  "name": "Raleigh-Cary, NC",
+  "lat": 35.756746,
+  "lng": -78.460441
+ },
+ {
+  "code": "0048900",
+  "name": "Wilmington, NC",
+  "lat": 34.253691,
+  "lng": -78.041674
+ },
+ {
+  "code": "0017410",
+  "name": "Cleveland, OH",
+  "lat": 41.667548,
+  "lng": -81.43052
+ },
+ {
+  "code": "0037980",
+  "name": "Philadelphia-Camden-Wilmington, PA-NJ-DE-MD",
+  "lat": 39.894958,
+  "lng": -75.311982
+ },
+ {
+  "code": "0038300",
+  "name": "Pittsburgh, PA",
+  "lat": 40.471332,
+  "lng": -79.863986
+ },
+ {
+  "code": "0016700",
+  "name": "Charleston-North Charleston, SC",
+  "lat": 33.01754,
+  "lng": -80.009947
+ },
+ {
+  "code": "0017900",
+  "name": "Columbia, SC",
+  "lat": 34.077585,
+  "lng": -81.037845
+ },
+ {
+  "code": "0024860",
+  "name": "Greenville-Anderson-Greer, SC",
+  "lat": 34.683709,
+  "lng": -82.413423
+ },
+ {
+  "code": "0016860",
+  "name": "Chattanooga, TN-GA",
+  "lat": 35.049361,
+  "lng": -85.361158
+ },
+ {
+  "code": "0028940",
+  "name": "Knoxville, TN",
+  "lat": 36.044462,
+  "lng": -84.136114
+ },
+ {
+  "code": "0040060",
+  "name": "Richmond, VA",
+  "lat": 37.412237,
+  "lng": -77.44372
+ },
+ {
+  "code": "0047260",
+  "name": "Virginia Beach-Chesapeake-Norfolk, VA-NC",
+  "lat": 36.837289,
+  "lng": -76.391849
+ },
+ {
+  "code": "0028420",
+  "name": "Kennewick-Richland, WA",
+  "lat": 46.364155,
+  "lng": -119.254927
+ },
+ {
+  "code": "0042660",
+  "name": "Seattle-Tacoma-Bellevue, WA",
+  "lat": 47.490552,
+  "lng": -121.833977
+ }
+]

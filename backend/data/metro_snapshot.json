@@ -1,0 +1,287 @@
+{
+ "source": "BLS OEWS (metro) via api.bls.gov v2 (registered key)",
+ "data_year": 2025,
+ "fetched_at": "2026-11-05T23:10:37.089225+00:00",
+ "metros": {
+  "0013820": {
+   "engineers": {
+    "employment": null,
+    "mean_wage": null,
+    "location_quotient": null
+   },
+   "technicians": {
+    "employment": 60.0
+   }
+  },
+  "0026620": {
+   "engineers": {
+    "employment": 80.0,
+    "mean_wage": 128510.0,
+    "location_quotient": 3.22
+   },
+   "technicians": {
+    "employment": null
+   }
+  },
+  "0047900": {
+   "engineers": {
+    "employment": 840.0,
+    "mean_wage": 169110.0,
+    "location_quotient": 2.71
+   },
+   "technicians": {
+    "employment": null
+   }
+  },
+  "0033100": {
+   "engineers": {
+    "employment": 30.0,
+    "mean_wage": 136380.0,
+    "location_quotient": 0.12
+   },
+   "technicians": {
+    "employment": null
+   }
+  },
+  "0012060": {
+   "engineers": {
+    "employment": 50.0,
+    "mean_wage": 135960.0,
+    "location_quotient": 0.17
+   },
+   "technicians": {
+    "employment": null
+   }
+  },
+  "0012260": {
+   "engineers": {
+    "employment": null,
+    "mean_wage": 124660.0,
+    "location_quotient": null
+   },
+   "technicians": {
+    "employment": 260.0
+   }
+  },
+  "0026820": {
+   "engineers": {
+    "employment": null,
+    "mean_wage": 129270.0,
+    "location_quotient": null
+   },
+   "technicians": {
+    "employment": null
+   }
+  },
+  "0016980": {
+   "engineers": {
+    "employment": 710.0,
+    "mean_wage": 141630.0,
+    "location_quotient": 1.6
+   },
+   "technicians": {
+    "employment": 470.0
+   }
+  },
+  "0038860": {
+   "engineers": {
+    "employment": 370.0,
+    "mean_wage": 118620.0,
+    "location_quotient": 13.03
+   },
+   "technicians": {
+    "employment": null
+   }
+  },
+  "0014460": {
+   "engineers": {
+    "employment": 220.0,
+    "mean_wage": 133500.0,
+    "location_quotient": 0.84
+   },
+   "technicians": {
+    "employment": 50.0
+   }
+  },
+  "0033780": {
+   "engineers": {
+    "employment": 90.0,
+    "mean_wage": 140660.0,
+    "location_quotient": 21.96
+   },
+   "technicians": {
+    "employment": null
+   }
+  },
+  "0035620": {
+   "engineers": {
+    "employment": null,
+    "mean_wage": null,
+    "location_quotient": null
+   },
+   "technicians": {
+    "employment": 100.0
+   }
+  },
+  "0045060": {
+   "engineers": {
+    "employment": 110.0,
+    "mean_wage": 144690.0,
+    "location_quotient": 3.72
+   },
+   "technicians": {
+    "employment": null
+   }
+  },
+  "0016740": {
+   "engineers": {
+    "employment": 240.0,
+    "mean_wage": 136550.0,
+    "location_quotient": 1.83
+   },
+   "technicians": {
+    "employment": null
+   }
+  },
+  "0039580": {
+   "engineers": {
+    "employment": 70.0,
+    "mean_wage": 139660.0,
+    "location_quotient": 0.95
+   },
+   "technicians": {
+    "employment": null
+   }
+  },
+  "0048900": {
+   "engineers": {
+    "employment": 80.0,
+    "mean_wage": 129880.0,
+    "location_quotient": 4.15
+   },
+   "technicians": {
+    "employment": null
+   }
+  },
+  "0017410": {
+   "engineers": {
+    "employment": 60.0,
+    "mean_wage": 138080.0,
+    "location_quotient": 0.64
+   },
+   "technicians": {
+    "employment": null
+   }
+  },
+  "0037980": {
+   "engineers": {
+    "employment": 230.0,
+    "mean_wage": 138720.0,
+    "location_quotient": 0.82
+   },
+   "technicians": {
+    "employment": null
+   }
+  },
+  "0038300": {
+   "engineers": {
+    "employment": 170.0,
+    "mean_wage": 133820.0,
+    "location_quotient": 1.54
+   },
+   "technicians": {
+    "employment": null
+   }
+  },
+  "0016700": {
+   "engineers": {
+    "employment": null,
+    "mean_wage": 127920.0,
+    "location_quotient": null
+   },
+   "technicians": {
+    "employment": null
+   }
+  },
+  "0017900": {
+   "engineers": {
+    "employment": 120.0,
+    "mean_wage": 136940.0,
+    "location_quotient": 3.14
+   },
+   "technicians": {
+    "employment": null
+   }
+  },
+  "0024860": {
+   "engineers": {
+    "employment": 150.0,
+    "mean_wage": 121470.0,
+    "location_quotient": 3.56
+   },
+   "technicians": {
+    "employment": 30.0
+   }
+  },
+  "0016860": {
+   "engineers": {
+    "employment": 100.0,
+    "mean_wage": 164940.0,
+    "location_quotient": 3.91
+   },
+   "technicians": {
+    "employment": null
+   }
+  },
+  "0028940": {
+   "engineers": {
+    "employment": 240.0,
+    "mean_wage": 185740.0,
+    "location_quotient": 5.74
+   },
+   "technicians": {
+    "employment": 60.0
+   }
+  },
+  "0040060": {
+   "engineers": {
+    "employment": 350.0,
+    "mean_wage": 146900.0,
+    "location_quotient": 5.4
+   },
+   "technicians": {
+    "employment": 60.0
+   }
+  },
+  "0047260": {
+   "engineers": {
+    "employment": 1260.0,
+    "mean_wage": 115140.0,
+    "location_quotient": 16.75
+   },
+   "technicians": {
+    "employment": 90.0
+   }
+  },
+  "0028420": {
+   "engineers": {
+    "employment": 230.0,
+    "mean_wage": 157770.0,
+    "location_quotient": 18.02
+   },
+   "technicians": {
+    "employment": null
+   }
+  },
+  "0042660": {
+   "engineers": {
+    "employment": 330.0,
+    "mean_wage": 164090.0,
+    "location_quotient": 1.59
+   },
+   "technicians": {
+    "employment": null
+   }
+  }
+ }
+}

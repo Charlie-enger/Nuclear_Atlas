@@ -8,6 +8,10 @@ const LABOR_SOURCES = [
   { label: "BLS OEWS — Nuclear Technicians (19-4051)", url: "https://www.bls.gov/oes/current/oes194051.htm" },
   { label: "BLS Occupational Outlook — Nuclear Engineers (2024–34)", url: "https://www.bls.gov/ooh/architecture-and-engineering/nuclear-engineers.htm" },
   { label: "BLS Occupational Outlook — Nuclear Technicians (2024–34)", url: "https://www.bls.gov/ooh/life-physical-and-social-science/nuclear-technicians.htm" },
+  { label: "BLS OEWS metropolitan area estimates (location quotients)", url: "https://www.bls.gov/oes/tables.htm" },
+  { label: "Census Gazetteer — metro area centroids", url: "https://www.census.gov/geographies/reference-files/time-series/geo/gazetteer-files.html" },
+  { label: "NEI Nuclear Uniform Curriculum Program (two-year tech programs)", url: "https://www.nei.org/" },
+  { label: "Naval Nuclear Power Training Command", url: "https://www.netc.navy.mil/NNPTC/" },
   { label: "EIA / NRC — operating reactors by state", url: "https://www.nrc.gov/reactors/operating/map-power-reactors.html" },
   { label: "DOE Pathways to Commercial Liftoff: Advanced Nuclear (2024)", url: "https://liftoff.energy.gov/advanced-nuclear/" },
 ];

@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import JobsMap, { METRICS, type JobMetric } from "@/components/JobsMap";
+import JobsMap, { METRICS, METRO_METRICS, TRAINING_COLORS, type JobMetric, type MapView, type MetroMetric } from "@/components/JobsMap";
 import { DataBadge, Panel, SectionHead, StatTile } from "@/components/atoms";
 import { usePrograms, useRefreshWorkforce, useWorkforce } from "@/lib/queries";
 import { CHART, fmtInt, fmtMoney, tooltipStyle } from "@/lib/format";
@@ -26,16 +26,29 @@ export default function Workforce() {
   const programs = usePrograms();
   const refresh = useRefreshWorkforce();
   const [metric, setMetric] = useState<JobMetric>("eng_emp");
+  const [metroMetric, setMetroMetric] = useState<MetroMetric>("m_eng_emp");
+  const [view, setView] = useState<MapView>("states");
   const [showEmployers, setShowEmployers] = useState(true);
+  const [showTraining, setShowTraining] = useState(false);
   const [selectedCode, setSelectedCode] = useState<string | null>(null);
+  const [selectedMetro, setSelectedMetro] = useState<string | null>(null);
 
   const d = wf.isError ? undefined : wf.data;
   const states = d?.states ?? [];
+  const metros = d?.metros ?? [];
+  const training = d?.training_sites ?? [];
   const ranked = useMemo(
     () => [...states].sort((a, b) => (b.engineers.employment ?? -1) - (a.engineers.employment ?? -1)),
     [states],
   );
+  const metroRanked = useMemo(
+    () => [...metros].sort((a, b) => (b.ne_location_quotient ?? -1) - (a.ne_location_quotient ?? -1) || (b.ne_employment ?? -1) - (a.ne_employment ?? -1)),
+    [metros],
+  );
+  const selMetro = metros.find((m) => m.code === (selectedMetro ?? metroRanked[0]?.code)) ?? null;
   const sel = states.find((s) => s.code === (selectedCode ?? ranked[0]?.code)) ?? null;
+  const selTraining = training.filter((t) => t.state === sel?.code);
+  const tp = d?.technician_pipeline;
   const selEmployers = d?.employers.filter((e) => e.state === sel?.code) ?? [];
   const selPrograms = (programs.data ?? []).filter((p) => p.state === sel?.code);
   const eng = d?.projections.find((p) => p.key === "engineers");
@@ -86,29 +99,93 @@ export default function Workforce() {
       <div className="mt-8 grid gap-4 lg:grid-cols-[minmax(0,1fr)_380px]">
         <div className="flex flex-col overflow-hidden rounded-xl border border-slate-800 bg-panel/90">
           <div className="flex flex-wrap items-center gap-3 border-b border-slate-800 p-3">
-            <Select value={metric} onValueChange={(v: string) => setMetric(v as JobMetric)}>
-              <SelectTrigger className="w-72" data-testid="jobs-metric-select">
-                <SelectValue>{(v) => METRICS[v as JobMetric].label}</SelectValue>
-              </SelectTrigger>
-              <SelectContent className="z-[1300]">
-                {(Object.keys(METRICS) as JobMetric[]).map((k) => (
-                  <SelectItem key={k} value={k} data-testid={`jobs-metric-${k}`}>{METRICS[k].label}</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+            <div className="flex rounded-md border border-slate-700 p-0.5" data-testid="jobs-view-toggle">
+              {(["states", "metros"] as MapView[]).map((v) => (
+                <button
+                  key={v}
+                  onClick={() => setView(v)}
+                  className={cn(
+                    "rounded px-3 py-1 text-xs transition-colors duration-150",
+                    view === v ? "bg-cyan-400/15 text-cherenkov" : "text-slate-400 hover:text-slate-100",
+                  )}
+                  data-testid={`jobs-view-${v}`}
+                >
+                  {v === "states" ? "States" : "Metro hotspots"}
+                </button>
+              ))}
+            </div>
+            {view === "states" ? (
+              <Select key="state-metric" value={metric} onValueChange={(v: string) => setMetric(v as JobMetric)}>
+                <SelectTrigger className="w-72" data-testid="jobs-metric-select">
+                  <SelectValue>{(v) => METRICS[v as JobMetric]?.label ?? ""}</SelectValue>
+                </SelectTrigger>
+                <SelectContent className="z-[1300]">
+                  {(Object.keys(METRICS) as JobMetric[]).map((k) => (
+                    <SelectItem key={k} value={k} data-testid={`jobs-metric-${k}`}>{METRICS[k].label}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            ) : (
+              <Select key="metro-metric" value={metroMetric} onValueChange={(v: string) => setMetroMetric(v as MetroMetric)}>
+                <SelectTrigger className="w-72" data-testid="jobs-metro-metric-select">
+                  <SelectValue>{(v) => METRO_METRICS[v as MetroMetric]?.label ?? ""}</SelectValue>
+                </SelectTrigger>
+                <SelectContent className="z-[1300]">
+                  {(Object.keys(METRO_METRICS) as MetroMetric[]).map((k) => (
+                    <SelectItem key={k} value={k} data-testid={`jobs-metro-metric-${k}`}>{METRO_METRICS[k].label}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            )}
             <label className="flex cursor-pointer items-center gap-2 text-xs text-slate-300">
               <Checkbox checked={showEmployers} onCheckedChange={(v) => setShowEmployers(!!v)} data-testid="jobs-toggle-employers" />
-              Show labs, vendors & utilities
+              Labs, vendors & utilities
             </label>
-            <DataBadge kind={metric === "balance" ? "derived" : "federal"} className="ml-auto" />
+            <label className="flex cursor-pointer items-center gap-2 text-xs text-slate-300">
+              <Checkbox checked={showTraining} onCheckedChange={(v) => setShowTraining(!!v)} data-testid="jobs-toggle-training" />
+              Technician training sites
+            </label>
+            <DataBadge kind={view === "states" && metric === "balance" ? "derived" : "federal"} className="ml-auto" />
           </div>
           <div className="h-[460px] lg:h-[560px]">
-            <JobsMap states={states} employers={d?.employers ?? []} metric={metric} showEmployers={showEmployers} selected={sel?.code ?? null} onSelect={setSelectedCode} />
+            <JobsMap
+              view={view}
+              states={states}
+              metros={metros}
+              employers={d?.employers ?? []}
+              training={training}
+              metric={metric}
+              metroMetric={metroMetric}
+              showEmployers={showEmployers}
+              showTraining={showTraining}
+              selected={view === "states" ? (sel?.code ?? null) : (selMetro?.code ?? null)}
+              onSelect={view === "states" ? setSelectedCode : setSelectedMetro}
+            />
           </div>
         </div>
 
         <Panel className="h-fit lg:h-[617px] lg:overflow-y-auto" testId="state-detail-panel">
-          {sel ? (
+          {view === "metros" && selMetro ? (
+            <div data-testid="metro-detail">
+              <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-slate-500">Metro hotspot</div>
+              <h3 className="font-heading text-2xl font-semibold text-slate-50" data-testid="metro-detail-name">{selMetro.name}</h3>
+              {selMetro.anchor && <p className="mt-1 text-sm text-cyan-200" data-testid="metro-detail-anchor">{selMetro.anchor}</p>}
+              <div className="mt-3">
+                <Row label="Nuclear engineers employed" value={selMetro.ne_employment !== null ? fmtInt(selMetro.ne_employment) : "suppressed"} testId="metro-ne-employment" />
+                <Row
+                  label="Concentration vs US average"
+                  value={selMetro.ne_location_quotient !== null ? <span className="text-pink-300">{selMetro.ne_location_quotient.toFixed(2)}×</span> : "—"}
+                  testId="metro-ne-lq"
+                />
+                <Row label="Engineer mean wage" value={selMetro.ne_mean_wage !== null ? fmtMoney(selMetro.ne_mean_wage) : "—"} testId="metro-ne-wage" />
+                <Row label="Nuclear technicians employed" value={selMetro.tech_employment !== null ? fmtInt(selMetro.tech_employment) : "suppressed"} testId="metro-tech-employment" />
+              </div>
+              <p className="mt-2 text-[11px] leading-relaxed text-slate-500">
+                Location quotient = the metro's share of jobs in nuclear engineering ÷ the national share. 18× means nuclear engineers are 18 times more concentrated than
+                in the US overall. {selMetro.suppressed && "BLS withholds this metro's employment count (small sample or confidentiality) even though it is a known nuclear hub."}
+              </p>
+            </div>
+          ) : sel ? (
             <>
               <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-slate-500">State profile</div>
               <h3 className="font-heading text-2xl font-semibold text-slate-50" data-testid="state-detail-name">{sel.name}</h3>
@@ -151,6 +228,19 @@ export default function Workforce() {
                       <li key={e.name} className="rounded-md border border-slate-800 bg-subtle/40 px-2.5 py-1.5">
                         <div className="text-sm text-slate-100">{e.name}</div>
                         <div className="text-[11px] text-slate-400">{e.type} · {e.focus}</div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              {selTraining.length > 0 && (
+                <div className="mt-4">
+                  <div className="mb-1.5 text-xs uppercase tracking-wider text-slate-500">Technician training</div>
+                  <ul className="space-y-2" data-testid="state-training-sites">
+                    {selTraining.map((t) => (
+                      <li key={t.id} className="rounded-md border border-lime-400/20 bg-lime-950/20 px-2.5 py-1.5">
+                        <div className="text-sm text-slate-100">{t.name}</div>
+                        <div className="text-[11px] text-slate-400">{t.credentials.join(" · ")}</div>
                       </li>
                     ))}
                   </ul>
@@ -245,16 +335,102 @@ export default function Workforce() {
                 </div>
               </Panel>
             ))}
-            {tech && (
+            {tp && (
               <Panel className="p-4" testId="technician-pipeline-note">
                 <h4 className="font-heading font-semibold text-slate-100">Technician pipeline</h4>
                 <p className="mt-1 text-xs text-slate-400">
-                  ~{tech.annual_openings} technician openings/yr are filled mainly by 2-year nuclear/radiation-protection technology programs and Navy nuclear veterans —
-                  not by the 4-year programs on the Programs map.
+                  ~{tp.annual_technician_openings} technician openings/yr are filled mainly by two-year nuclear technology colleges (~{fmtInt(tp.civilian_annual_completers)} completers/yr)
+                  and Navy nuclear veterans — see the training pipeline below.
                 </p>
               </Panel>
             )}
           </div>
+        </div>
+      </div>
+
+      {/* Metro hotspots */}
+      <div className="mt-12">
+        <SectionHead
+          eyebrow={`BLS OEWS metro areas · May ${d?.data_year ?? ""}`}
+          title="Metro hotspots for nuclear engineers"
+          right={<DataBadge kind="federal" />}
+        />
+        <div className="rounded-xl border border-slate-800 bg-panel/90" data-testid="metro-ranking-table">
+          <Table>
+            <TableHeader>
+              <TableRow className="border-slate-800 hover:bg-transparent">
+                {["Metro area", "What's there", "Engineers", "Concentration", "Eng. mean wage", "Technicians"].map((h, i) => (
+                  <TableHead key={h} className={cn("text-[11px] uppercase tracking-wider text-slate-500", i > 1 && "text-right")}>{h}</TableHead>
+                ))}
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {metroRanked.map((m) => (
+                <TableRow
+                  key={m.code}
+                  onClick={() => {
+                    setView("metros");
+                    setSelectedMetro(m.code);
+                    window.scrollTo({ top: 300, behavior: "smooth" });
+                  }}
+                  className={cn("cursor-pointer border-slate-800/70 transition-colors hover:bg-cyan-400/[0.04]", view === "metros" && selMetro?.code === m.code && "bg-cyan-400/[0.06]")}
+                  data-testid={`metro-row-${m.code}`}
+                >
+                  <TableCell className="font-medium text-slate-100">{m.name}</TableCell>
+                  <TableCell className="max-w-80 whitespace-normal text-xs text-slate-400">{m.anchor ?? "—"}</TableCell>
+                  <TableCell className="text-right font-mono">{m.ne_employment !== null ? fmtInt(m.ne_employment) : <span className="text-slate-500">suppressed</span>}</TableCell>
+                  <TableCell className="text-right font-mono text-pink-300">{m.ne_location_quotient !== null ? `${m.ne_location_quotient.toFixed(1)}×` : "—"}</TableCell>
+                  <TableCell className="text-right font-mono">{fmtMoney(m.ne_mean_wage)}</TableCell>
+                  <TableCell className="text-right font-mono">{fmtInt(m.tech_employment)}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
+        <p className="mt-2 text-xs text-slate-500">
+          Only metros where BLS publishes at least one value are listed, plus known hubs it suppresses. Oak Ridge (ORNL) sits inside the Knoxville metro; Los Alamos falls
+          outside any metro, so Santa Fe is shown as its proxy.
+        </p>
+      </div>
+
+      {/* Technician training pipeline */}
+      <div className="mt-12">
+        <SectionHead eyebrow="Technician supply" title="Two-year programs & Navy nuclear training" right={<DataBadge kind="estimate" />} />
+        <div className="grid grid-cols-2 gap-2.5 md:grid-cols-4" data-testid="technician-pipeline-stats">
+          <StatTile testId="stat-tech-sites" label="Training sites mapped" value={tp?.site_count ?? "—"} accent="emerald" />
+          <StatTile testId="stat-tech-civilian" label="College completers / yr" value={tp ? `~${fmtInt(tp.civilian_annual_completers)}` : "—"} sub="AAS / certificates (est.)" accent="emerald" />
+          <StatTile testId="stat-tech-navy" label="Navy nuclear trainees / yr" value={tp ? `~${fmtInt(tp.navy_annual_trainees)}` : "—"} sub="many join civilian plants after service" accent="sky" />
+          <StatTile testId="stat-tech-openings-vs" label="Technician openings / yr" value={fmtInt(tp?.annual_technician_openings)} sub="BLS 2024–34" accent="amber" />
+        </div>
+        <div className="mt-4 rounded-xl border border-slate-800 bg-panel/90" data-testid="training-sites-table">
+          <Table>
+            <TableHeader>
+              <TableRow className="border-slate-800 hover:bg-transparent">
+                {["Site", "Type", "Location", "Credentials", "Partner plants / employers", "Completers/yr"].map((h, i) => (
+                  <TableHead key={h} className={cn("text-[11px] uppercase tracking-wider text-slate-500", i === 5 && "text-right")}>{h}</TableHead>
+                ))}
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {training.map((t) => (
+                <TableRow key={t.id} className="border-slate-800/70" data-testid={`training-row-${t.id}`}>
+                  <TableCell className="whitespace-normal font-medium text-slate-100">
+                    <a href={t.website} target="_blank" rel="noreferrer" className="hover:text-sky-400 hover:underline">{t.name}</a>
+                  </TableCell>
+                  <TableCell>
+                    <span className="inline-flex items-center gap-1.5 text-xs text-slate-300">
+                      <span className="size-2 rounded-full" style={{ background: TRAINING_COLORS[t.type] }} />
+                      {t.type}
+                    </span>
+                  </TableCell>
+                  <TableCell className="text-xs text-slate-400">{t.city}, {t.state}</TableCell>
+                  <TableCell className="max-w-72 whitespace-normal text-xs text-slate-300">{t.credentials.join(" · ")}</TableCell>
+                  <TableCell className="max-w-64 whitespace-normal text-xs text-slate-400">{t.partners.join(", ")}</TableCell>
+                  <TableCell className="text-right font-mono">{t.annual_completers ? `~${fmtInt(t.annual_completers)}` : <span className="text-xs text-slate-500">in Navy pipeline</span>}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
         </div>
       </div>
 

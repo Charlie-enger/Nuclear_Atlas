@@ -71,6 +71,42 @@ class Pipeline(BaseModel):
     orise_reference: OriseReference
 
 
+class MetroWorkforce(BaseModel):
+    code: str
+    name: str
+    lat: float
+    lng: float
+    ne_employment: float | None
+    ne_mean_wage: float | None
+    ne_location_quotient: float | None
+    tech_employment: float | None
+    anchor: str | None
+    suppressed: bool  # BLS publishes no employment estimate for this hub
+
+
+class TrainingSite(BaseModel):
+    id: str
+    name: str
+    type: str
+    city: str
+    state: str
+    lat: float
+    lng: float
+    credentials: list[str]
+    annual_completers: int | None
+    partners: list[str]
+    delivery: str
+    website: str
+
+
+class TechnicianPipeline(BaseModel):
+    civilian_annual_completers: int
+    navy_annual_trainees: int
+    apprenticeship_annual: int
+    annual_technician_openings: int
+    site_count: int
+
+
 class Workforce(BaseModel):
     source: str
     data_year: int | None
@@ -83,3 +119,8 @@ class Workforce(BaseModel):
     pipeline: Pipeline
     states: list[StateWorkforce]
     employers: list[Employer]
+    metros: list[MetroWorkforce]
+    metro_source: str
+    metro_fetched_at: str
+    training_sites: list[TrainingSite]
+    technician_pipeline: TechnicianPipeline

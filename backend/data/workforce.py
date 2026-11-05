@@ -92,3 +92,34 @@ EMPLOYERS = [
     ("U.S. Nuclear Regulatory Commission", "Regulator", "Rockville", "MD", 39.0450, -77.1100, "Licensing & oversight"),
     ("Holtec International", "Vendor", "Camden", "NJ", 39.9440, -75.1200, "Palisades restart, SMR-300, spent fuel storage"),
 ]
+
+# What anchors each metro hotspot (keyed by OEWS metro area code)
+METRO_ANCHORS = {
+    "0047260": "Norfolk Naval Shipyard, Newport News Shipbuilding, Naval Reactors field offices",
+    "0047900": "NRC, DOE HQ, Naval Reactors (NAVSEA 08), X-energy, consultancies",
+    "0016980": "Constellation fleet engineering, Argonne National Laboratory",
+    "0038860": "Portsmouth Naval Shipyard (Kittery) submarine overhaul",
+    "0040060": "Dominion Energy nuclear fleet (North Anna, Surry)",
+    "0042660": "TerraPower, Boeing/defense, PNNL Seattle",
+    "0016740": "Duke Energy nuclear HQ, Westinghouse/Framatome engineering offices",
+    "0028940": "Oak Ridge National Laboratory, Y-12, Kairos Power, TVA (Oak Ridge hub)",
+    "0028420": "Hanford Site, PNNL, Energy Northwest Columbia Station",
+    "0038300": "Westinghouse HQ, Naval Nuclear Laboratory (Bettis)",
+    "0024860": "Duke Energy Oconee, engineering services",
+    "0017900": "Westinghouse Columbia Fuel Fabrication, V.C. Summer",
+    "0045060": "Constellation Nine Mile Point & FitzPatrick",
+    "0016860": "TVA Office of Nuclear Power, Sequoyah & Watts Bar",
+    "0033780": "DTE Fermi 2",
+    "0026620": "TVA Browns Ferry, defense/space nuclear",
+    "0048900": "GE Vernova Hitachi Nuclear Energy, Global Nuclear Fuel",
+    "0026820": "Idaho National Laboratory — the nation's lead nuclear R&D lab",
+    "0012260": "Savannah River Site, SRNL, Plant Vogtle",
+    "0016700": "Naval Nuclear Power Training Command, Charleston Naval Weapons Station",
+}
+
+# Known nuclear hubs where BLS publishes no metro estimate — shown as 'suppressed' hotspots.
+SUPPRESSED_HUBS = [
+    {"code": "0010740", "name": "Albuquerque, NM", "lat": 35.1, "lng": -106.65, "anchor": "Sandia National Laboratories, Kirtland AFB"},
+    {"code": "0042140", "name": "Santa Fe, NM", "lat": 35.69, "lng": -105.94, "anchor": "Los Alamos National Laboratory (Los Alamos County commute shed)"},
+    {"code": "0031340", "name": "Lynchburg, VA", "lat": 37.41, "lng": -79.14, "anchor": "BWX Technologies, Framatome Inc. HQ"},
+]
