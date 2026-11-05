@@ -42,8 +42,11 @@ def _parse(value: str | None) -> float | None:
         return None
 
 
-async def _post(client: httpx.AsyncClient, ids: list[str]) -> dict[str, dict]:
-    key = os.environ.get("BLS_API_KEY", "").strip()
+class InvalidKeyError(RuntimeError):
+    pass
+
+
+async def _post(client: httpx.AsyncClient, ids: list[str], key: str) -> dict[str, dict]:
     payload: dict = {"seriesid": ids}
     if key:
         payload["registrationkey"] = key
@@ -51,6 +54,9 @@ async def _post(client: httpx.AsyncClient, ids: list[str]) -> dict[str, dict]:
     r.raise_for_status()
     body = r.json()
     if body.get("status") != "REQUEST_SUCCEEDED":
+        msg = " ".join(body.get("message", []))
+        if key and "key" in msg.lower() and "invalid" in msg.lower():
+            raise InvalidKeyError("BLS rejected the API key")
         raise RuntimeError("; ".join(body.get("message", [])) or "BLS request failed")
     out = {}
     for s in body["Results"]["series"]:
@@ -69,11 +75,17 @@ async def fetch_oews() -> dict:
             for dt, field in STATE_DATATYPES.items():
                 plan.append((st, occ, field, series_id("S", f"{fips}00000", soc, dt)))
 
-    batch = 50 if os.environ.get("BLS_API_KEY") else 25
+    key = os.environ.get("BLS_API_KEY", "").strip()
     results: dict[str, dict] = {}
+    api = "v2 (registered key)" if key else "v1 (keyless)"
     async with httpx.AsyncClient(timeout=httpx.Timeout(30.0, connect=10.0)) as client:
-        for i in range(0, len(plan), batch):
-            results.update(await _post(client, [p[3] for p in plan[i : i + batch]]))
+        try:
+            for i in range(0, len(plan), 50 if key else 25):
+                results.update(await _post(client, [p[3] for p in plan[i : i + (50 if key else 25)]], key))
+        except InvalidKeyError:  # unactivated/invalid key — fall back to keyless v1
+            results, api = {}, "v1 (keyless — saved key was rejected by BLS)"
+            for i in range(0, len(plan), 25):
+                results.update(await _post(client, [p[3] for p in plan[i : i + 25]], ""))
 
     national: dict = {"engineers": {}, "technicians": {}}
     states: dict[str, dict] = {st: {"engineers": {}, "technicians": {}} for st in STATE_FIPS}
@@ -85,7 +97,7 @@ async def fetch_oews() -> dict:
             year = point.get("year")
         (national if area == "US" else states[area])[occ][field] = val
     return {
-        "source": "BLS OEWS via api.bls.gov",
+        "source": f"BLS OEWS via api.bls.gov {api}",
         "data_year": int(year) if year else None,
         "fetched_at": datetime.now(timezone.utc).isoformat(),
         "national": national,

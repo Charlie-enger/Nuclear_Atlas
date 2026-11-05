@@ -1,5 +1,6 @@
 import json
 import logging
+import os
 from datetime import datetime, timedelta, timezone
 
 from fastapi import APIRouter
@@ -84,7 +85,8 @@ async def refresh_workforce():
     oews, live = await _load_oews()
     if live:
         fetched = datetime.fromisoformat(oews["fetched_at"])
-        if datetime.now(timezone.utc) - fetched < REFRESH_COOLDOWN:
+        cooldown = timedelta(hours=1) if os.environ.get("BLS_API_KEY") else REFRESH_COOLDOWN
+        if datetime.now(timezone.utc) - fetched < cooldown:
             return _build(oews, live, "Live BLS data already fetched recently — using cached copy.")
     try:
         fresh = await fetch_oews()

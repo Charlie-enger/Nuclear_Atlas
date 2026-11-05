@@ -9,7 +9,7 @@ Interactive dashboard of US nuclear engineering programs and the nuclear enginee
 
 ## Data
 - Curated static data: `backend/data/programs.py` (32 programs; history interpolated from growth rates), `backend/data/workforce.py` (state centroids, reactor counts, projections, scenarios, employers).
-- BLS: `backend/lib/bls.py` fetches OEWS series (keyless v1, v2 if `BLS_API_KEY` set). Bundled snapshot `backend/data/bls_snapshot.json` (May 2025 data). `POST /api/workforce/refresh` stores live copy in Mongo `bls_cache` (_id `oews_latest`), 6h cooldown; failures fall back to last saved data.
+- BLS: `backend/lib/bls.py` fetches OEWS series (v2 if `BLS_API_KEY` set; auto-falls back to keyless v1 if BLS rejects the key). Bundled snapshot `backend/data/bls_snapshot.json` (May 2025 data). `POST /api/workforce/refresh` stores live copy in Mongo `bls_cache` (_id `oews_latest`), 6h cooldown; failures fall back to last saved data.
 
 ## API
 - GET /api/programs, GET /api/programs/summary, GET /api/programs/{id} (404 if unknown)
