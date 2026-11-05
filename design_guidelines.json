@@ -1,0 +1,163 @@
+{
+  "theme": "dark_primary_with_light_toggle",
+  "archetype": "ARCHETYPE_2_THE_PERFORMANCE_PRO_TACTICAL_DATA",
+  "concept_name": "NuData US — Nuclear Engineering Academic & Workforce Intelligence Grid",
+  "colors": {
+    "surfaces": [
+      {
+        "name": "page",
+        "kind": "solid",
+        "bg": "#0B0F17",
+        "on_bg": "#F1F5F9",
+        "on_bg_muted": "#94A3B8",
+        "roles": {
+          "link": "#38BDF8",
+          "error": "#F87171",
+          "success": "#34D399",
+          "warning": "#FBBF24",
+          "cherenkov": "#00F0FF",
+          "atomic_amber": "#F59E0B"
+        }
+      },
+      {
+        "name": "panel",
+        "kind": "solid",
+        "bg": "#111827",
+        "on_bg": "#F8FAFC",
+        "on_bg_muted": "#94A3B8",
+        "roles": {
+          "link": "#38BDF8",
+          "error": "#F87171",
+          "success": "#34D399",
+          "warning": "#FBBF24"
+        }
+      },
+      {
+        "name": "card_subtle",
+        "kind": "solid",
+        "bg": "#1E293B",
+        "on_bg": "#F8FAFC",
+        "on_bg_muted": "#94A3B8"
+      },
+      {
+        "name": "inverse",
+        "kind": "solid",
+        "bg": "#F8FAFC",
+        "on_bg": "#0B0F17",
+        "on_bg_muted": "#475569"
+      },
+      {
+        "name": "hero",
+        "kind": "image",
+        "contrast_against": "#080C14",
+        "guarantee": "scrim: linear-gradient(180deg, rgba(11,15,23,0.92) 0%, rgba(11,15,23,0.78) 50%, rgba(11,15,23,0.98) 100%)",
+        "on_bg": "#F8FAFC",
+        "on_bg_muted": "#CBD5E1",
+        "roles": {
+          "link": "#38BDF8",
+          "error": "#F87171",
+          "success": "#34D399"
+        }
+      },
+      {
+        "name": "badge_cherenkov",
+        "kind": "solid",
+        "bg": "#083344",
+        "on_bg": "#67E8F9",
+        "on_bg_muted": "#22D3EE"
+      },
+      {
+        "name": "badge_amber",
+        "kind": "solid",
+        "bg": "#451A03",
+        "on_bg": "#FDE68A",
+        "on_bg_muted": "#FBBF24"
+      },
+      {
+        "name": "glass_header",
+        "kind": "glass",
+        "contrast_against": "#0D131F",
+        "guarantee": "backdrop-blur-xl bg-[#0B0F17]/85 border-b border-slate-800/80",
+        "on_bg": "#F8FAFC",
+        "on_bg_muted": "#94A3B8"
+      }
+    ],
+    "accent": "#0284C7",
+    "on_accent": "#FFFFFF"
+  },
+  "typography": {
+    "font_family_heading": "Outfit, sans-serif",
+    "font_family_body": "IBM Plex Sans, sans-serif",
+    "font_family_mono": "IBM Plex Mono, monospace",
+    "scale_px": {
+      "display": 56,
+      "h1": 44,
+      "h2": 32,
+      "h3": 24,
+      "h4": 20,
+      "body": 16,
+      "caption": 14
+    },
+    "pairing_notes": "Outfit for strong, clean, technical headings; IBM Plex Sans for dense, high-legibility tabular & scientific text; IBM Plex Mono for SOC codes, rankings, budgets, and coordinates."
+  },
+  "entry_surfaces": {
+    "/": "tactical command hero with real-time stats ticker left, interactive US nuclear programs & jobs map center-stage with side-by-side drawer and compare workbench"
+  },
+  "layout_and_grids": {
+    "map_mode": "Leaflet with CartoDB Dark Matter / Positron tiles for high-contrast tactical data markers",
+    "structure": "Header (fixed glass with live BLS badge + mode switcher: All Programs | Workforce & Jobs | Compare Bench | State Heatmap) -> Hero summary banner with Cherenkov pulse -> Main 2-column or full split workspace (Interactive Leaflet Map with customized SVG pulsed markers on left/center + dynamic details drawer / compare tray) -> Secondary Analytics Grid (Growth trends, Graduates by year, Budget estimations, BLS supply vs demand gap).",
+    "compare_drawer": "Sticky bottom dock for comparing up to 3 institutions side-by-side with diff highlight on enrollment, research reactor status, ABET, placement rate, and 1/5/10yr growth."
+  },
+  "image_urls": [
+    {
+      "url": "https://images.unsplash.com/photo-1451187863213-d1bcbaae3fa3?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzB8MHwxfHNlYXJjaHwzfHxudWNsZWFyJTIwcmVhY3RvciUyMGdsb3dpbmclMjBibHVlJTIwY29yZXxlbnwwfHx8fDE3OTM5MTg3MDV8MA&ixlib=rb-4.1.0&q=85",
+      "category": "hero_background",
+      "description": "High energy nuclear test reactor chamber glowing with Cherenkov radiation aesthetic"
+    },
+    {
+      "url": "https://images.unsplash.com/photo-1719014745390-41341b26ba7d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzB8MHwxfHNlYXJjaHw0fHxudWNsZWFyJTIwcmVhY3RvciUyMGdsb3dpbmclMjBibHVlJTIwY29yZXxlbnwwfHx8fDE3OTM5MTg3MDV8MA&ixlib=rb-4.1.0&q=85",
+      "category": "reactor_core_detail",
+      "description": "Glowing blue core plasma effect for high-tier research reactor badge"
+    },
+    {
+      "url": "https://images.pexels.com/photos/18471527/pexels-photo-18471527.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "category": "lab_facility",
+      "description": "University nuclear physics and materials engineering workstation lab"
+    },
+    {
+      "url": "https://images.unsplash.com/photo-1748002388689-c62b45d5c28b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1MDZ8MHwxfHNlYXJjaHwzfHxlbmdpbmVlciUyMGNsZWFucm9vbSUyMHRlY2huaWNpYW4lMjBoaWdoJTIwdGVjaHxlbnwwfHx8fDE3OTM5MTg3MDV8MA&ixlib=rb-4.1.0&q=85",
+      "category": "workforce_technicians",
+      "description": "Cleanroom radiation safety and nuclear technician facility personnel"
+    }
+  ],
+  "motion": {
+    "library": "motion (bundled motion/react)",
+    "micro_interactions": {
+      "marker_pulse": "Continuous subtle 2s ease-in-out ripple on active research reactor sites (Cherenkov blue ring)",
+      "drawer_slide": "Spring physics transition (stiffness 300, damping 30) for program inspection drawer",
+      "compare_bar": "Slide up from bottom with stagger children for program metric cards",
+      "counter_transition": "Animated number tick on state hover / filter change"
+    }
+  },
+  "accessibility": {
+    "wcag_compliance": "WCAG AA (APCA checked)",
+    "data_testids": "All buttons, filters, map markers, table rows, tab triggers, modal toggles, and compare slots must include kebab-case data-testid attributes (e.g. data-testid='program-marker-mit', data-testid='tab-programs-map', data-testid='compare-btn-purdue', data-testid='filter-has-reactor').",
+    "keyboard_navigation": "Map markers accessible via list keyboard navigation; Escape closes details drawer; tab indexing through program cards.",
+    "reduced_motion": "All motion.div respect prefers-reduced-motion media query"
+  },
+  "visual_enhancers": {
+    "cherenkov_glow": "box-shadow: 0 0 25px -5px rgba(0, 240, 255, 0.35)",
+    "atomic_grid_border": "1px solid rgba(56, 189, 248, 0.15)",
+    "tactical_scanlines": "Subtle dark gradient raster on card headers to impart command-center rigor"
+  },
+  "instructions_to_main_agent": [
+    "1. STACK: React 19 + Vite (farm-ts template) + Tailwind v4 + Lucide icons + Recharts (preinstalled) + Leaflet (run 'cd /app/frontend && yarn add leaflet react-leaflet @types/leaflet' if needed).",
+    "2. FONT SETUP: Import '@fontsource-variable/outfit' and '@fontsource/ibm-plex-sans' and '@fontsource/ibm-plex-mono' in frontend/src/index.css, setting --font-heading to Outfit and --font-sans to IBM Plex Sans.",
+    "3. DATA COVERAGE: Comprehensive curated dataset of 32+ prominent US Nuclear Engineering Programs (MIT, Michigan, Purdue, NC State, UIUC, Texas A&M, Wisconsin-Madison, Penn State, Georgia Tech, UC Berkeley, Florida, Tennessee Knoxville, Oregon State, RPI, Missouri S&T, Virginia Tech, Ohio State, Idaho State, New Mexico, Maryland, Clemson, etc.).",
+    "4. PROGRAM FIELDS REQUIRED: University name, Department, City, State, Lat/Lng coordinates, Total Enrollment (Undergrad/Grad/PhD), 1-Year Growth %, 5-Year Growth %, 10-Year Growth %, Historical Graduates by Year (2018-2025/2026), Estimated Yearly Budget ($M), Job Placement Rate %, On-Campus Research Reactor (Yes/No + Reactor power/type like PULSTAR, Breazeale, MITR-II, TRIGA), Degrees Offered (BS, MS, PhD), ABET Accreditation status, US News / National Ranking, Primary Research Focus (Fusion, SMRs, Waste Management, Thermal Hydraulics, Nuclear Forensics), Data Source citations (NEUP 2025 Sourcebook, IPEDS, ABET, Department records).",
+    "5. JOBS & WORKFORCE MAP & INTELLIGENCE: Map layer for SOC 17-2161 (Nuclear Engineers) and SOC 19-4051 (Nuclear Technicians) by state with employment counts, median annual wage ($133,970 for Engineers, $110,240 for Techs), 10-year projected openings (~800/yr for engineers, ~900/yr for techs), replacement gap analysis vs annual graduate output, and active commercial/test reactors by state.",
+    "6. LIVE BLS REFRESH / DATA LABELS: Include simulated/live BLS API data refresh trigger with timestamp, confidence metric, and clear tags for 'Verified Federal (BLS/IPEDS)', 'NEUP Academic Census', and 'Institution Estimate'.",
+    "7. INTERACTIVE FEATURES: Interactive Leaflet Map with filter pills (Degree levels, Has Research Reactor, ABET, Minimum Budget, Region), Search-as-you-type, Program Comparison tray (up to 3 universities side-by-side with delta badges), Sortable tabular view, and Rich Recharts graphs (Graduation trends, Supply vs Demand gap, Budget distribution).",
+    "8. THEME: Sleek dark tactical theme by default (#0B0F17) with Cherenkov cyan (#00F0FF) and Atomic Amber (#F59E0B) accents, with a clean light mode toggle."
+  ]
+}

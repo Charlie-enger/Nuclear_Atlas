@@ -1,0 +1,529 @@
+{
+ "source": "BLS OEWS via api.bls.gov",
+ "data_year": 2025,
+ "fetched_at": "2026-11-05T22:48:57.858789+00:00",
+ "national": {
+  "engineers": {
+   "employment": 15280.0,
+   "mean_wage": 140420.0,
+   "median_wage": 133970.0
+  },
+  "technicians": {
+   "employment": 6470.0,
+   "mean_wage": 108940.0,
+   "median_wage": 110240.0
+  }
+ },
+ "states": {
+  "AL": {
+   "engineers": {
+    "employment": 290.0,
+    "mean_wage": 134480.0
+   },
+   "technicians": {
+    "employment": 280.0,
+    "mean_wage": 114020.0
+   }
+  },
+  "AK": {
+   "engineers": {
+    "employment": null,
+    "mean_wage": null
+   },
+   "technicians": {
+    "employment": null,
+    "mean_wage": null
+   }
+  },
+  "AZ": {
+   "engineers": {
+    "employment": null,
+    "mean_wage": null
+   },
+   "technicians": {
+    "employment": null,
+    "mean_wage": null
+   }
+  },
+  "AR": {
+   "engineers": {
+    "employment": null,
+    "mean_wage": null
+   },
+   "technicians": {
+    "employment": null,
+    "mean_wage": null
+   }
+  },
+  "CA": {
+   "engineers": {
+    "employment": 1070.0,
+    "mean_wage": 160980.0
+   },
+   "technicians": {
+    "employment": null,
+    "mean_wage": 94690.0
+   }
+  },
+  "CO": {
+   "engineers": {
+    "employment": null,
+    "mean_wage": null
+   },
+   "technicians": {
+    "employment": null,
+    "mean_wage": null
+   }
+  },
+  "CT": {
+   "engineers": {
+    "employment": null,
+    "mean_wage": null
+   },
+   "technicians": {
+    "employment": null,
+    "mean_wage": null
+   }
+  },
+  "DE": {
+   "engineers": {
+    "employment": null,
+    "mean_wage": null
+   },
+   "technicians": {
+    "employment": null,
+    "mean_wage": null
+   }
+  },
+  "DC": {
+   "engineers": {
+    "employment": 230.0,
+    "mean_wage": 180480.0
+   },
+   "technicians": {
+    "employment": null,
+    "mean_wage": null
+   }
+  },
+  "FL": {
+   "engineers": {
+    "employment": 120.0,
+    "mean_wage": 137910.0
+   },
+   "technicians": {
+    "employment": 60.0,
+    "mean_wage": 121650.0
+   }
+  },
+  "GA": {
+   "engineers": {
+    "employment": 200.0,
+    "mean_wage": 133010.0
+   },
+   "technicians": {
+    "employment": null,
+    "mean_wage": null
+   }
+  },
+  "HI": {
+   "engineers": {
+    "employment": null,
+    "mean_wage": null
+   },
+   "technicians": {
+    "employment": null,
+    "mean_wage": null
+   }
+  },
+  "ID": {
+   "engineers": {
+    "employment": null,
+    "mean_wage": 133750.0
+   },
+   "technicians": {
+    "employment": null,
+    "mean_wage": null
+   }
+  },
+  "IL": {
+   "engineers": {
+    "employment": 1040.0,
+    "mean_wage": 139280.0
+   },
+   "technicians": {
+    "employment": 780.0,
+    "mean_wage": 105680.0
+   }
+  },
+  "IN": {
+   "engineers": {
+    "employment": null,
+    "mean_wage": null
+   },
+   "technicians": {
+    "employment": null,
+    "mean_wage": null
+   }
+  },
+  "IA": {
+   "engineers": {
+    "employment": null,
+    "mean_wage": null
+   },
+   "technicians": {
+    "employment": null,
+    "mean_wage": null
+   }
+  },
+  "KS": {
+   "engineers": {
+    "employment": null,
+    "mean_wage": null
+   },
+   "technicians": {
+    "employment": null,
+    "mean_wage": null
+   }
+  },
+  "KY": {
+   "engineers": {
+    "employment": null,
+    "mean_wage": null
+   },
+   "technicians": {
+    "employment": null,
+    "mean_wage": null
+   }
+  },
+  "LA": {
+   "engineers": {
+    "employment": null,
+    "mean_wage": null
+   },
+   "technicians": {
+    "employment": null,
+    "mean_wage": null
+   }
+  },
+  "ME": {
+   "engineers": {
+    "employment": 420.0,
+    "mean_wage": 123290.0
+   },
+   "technicians": {
+    "employment": null,
+    "mean_wage": null
+   }
+  },
+  "MD": {
+   "engineers": {
+    "employment": 180.0,
+    "mean_wage": 155410.0
+   },
+   "technicians": {
+    "employment": null,
+    "mean_wage": null
+   }
+  },
+  "MA": {
+   "engineers": {
+    "employment": 210.0,
+    "mean_wage": 134020.0
+   },
+   "technicians": {
+    "employment": 50.0,
+    "mean_wage": 103050.0
+   }
+  },
+  "MI": {
+   "engineers": {
+    "employment": 330.0,
+    "mean_wage": 128070.0
+   },
+   "technicians": {
+    "employment": null,
+    "mean_wage": null
+   }
+  },
+  "MN": {
+   "engineers": {
+    "employment": null,
+    "mean_wage": null
+   },
+   "technicians": {
+    "employment": null,
+    "mean_wage": null
+   }
+  },
+  "MS": {
+   "engineers": {
+    "employment": null,
+    "mean_wage": null
+   },
+   "technicians": {
+    "employment": null,
+    "mean_wage": null
+   }
+  },
+  "MO": {
+   "engineers": {
+    "employment": null,
+    "mean_wage": null
+   },
+   "technicians": {
+    "employment": 150.0,
+    "mean_wage": 100580.0
+   }
+  },
+  "MT": {
+   "engineers": {
+    "employment": null,
+    "mean_wage": null
+   },
+   "technicians": {
+    "employment": null,
+    "mean_wage": null
+   }
+  },
+  "NE": {
+   "engineers": {
+    "employment": null,
+    "mean_wage": null
+   },
+   "technicians": {
+    "employment": null,
+    "mean_wage": null
+   }
+  },
+  "NV": {
+   "engineers": {
+    "employment": null,
+    "mean_wage": null
+   },
+   "technicians": {
+    "employment": null,
+    "mean_wage": null
+   }
+  },
+  "NH": {
+   "engineers": {
+    "employment": null,
+    "mean_wage": null
+   },
+   "technicians": {
+    "employment": null,
+    "mean_wage": null
+   }
+  },
+  "NJ": {
+   "engineers": {
+    "employment": null,
+    "mean_wage": null
+   },
+   "technicians": {
+    "employment": null,
+    "mean_wage": null
+   }
+  },
+  "NM": {
+   "engineers": {
+    "employment": 500.0,
+    "mean_wage": 180290.0
+   },
+   "technicians": {
+    "employment": null,
+    "mean_wage": null
+   }
+  },
+  "NY": {
+   "engineers": {
+    "employment": 150.0,
+    "mean_wage": 150090.0
+   },
+   "technicians": {
+    "employment": 260.0,
+    "mean_wage": 136950.0
+   }
+  },
+  "NC": {
+   "engineers": {
+    "employment": 460.0,
+    "mean_wage": 136120.0
+   },
+   "technicians": {
+    "employment": 420.0,
+    "mean_wage": 113240.0
+   }
+  },
+  "ND": {
+   "engineers": {
+    "employment": null,
+    "mean_wage": null
+   },
+   "technicians": {
+    "employment": null,
+    "mean_wage": null
+   }
+  },
+  "OH": {
+   "engineers": {
+    "employment": 190.0,
+    "mean_wage": null
+   },
+   "technicians": {
+    "employment": null,
+    "mean_wage": null
+   }
+  },
+  "OK": {
+   "engineers": {
+    "employment": null,
+    "mean_wage": null
+   },
+   "technicians": {
+    "employment": null,
+    "mean_wage": null
+   }
+  },
+  "OR": {
+   "engineers": {
+    "employment": null,
+    "mean_wage": null
+   },
+   "technicians": {
+    "employment": null,
+    "mean_wage": null
+   }
+  },
+  "PA": {
+   "engineers": {
+    "employment": 340.0,
+    "mean_wage": 134740.0
+   },
+   "technicians": {
+    "employment": 310.0,
+    "mean_wage": 121060.0
+   }
+  },
+  "RI": {
+   "engineers": {
+    "employment": null,
+    "mean_wage": null
+   },
+   "technicians": {
+    "employment": null,
+    "mean_wage": null
+   }
+  },
+  "SC": {
+   "engineers": {
+    "employment": 1440.0,
+    "mean_wage": 125440.0
+   },
+   "technicians": {
+    "employment": 750.0,
+    "mean_wage": 108360.0
+   }
+  },
+  "SD": {
+   "engineers": {
+    "employment": null,
+    "mean_wage": null
+   },
+   "technicians": {
+    "employment": null,
+    "mean_wage": null
+   }
+  },
+  "TN": {
+   "engineers": {
+    "employment": 720.0,
+    "mean_wage": null
+   },
+   "technicians": {
+    "employment": 110.0,
+    "mean_wage": 94200.0
+   }
+  },
+  "TX": {
+   "engineers": {
+    "employment": 190.0,
+    "mean_wage": 129220.0
+   },
+   "technicians": {
+    "employment": 110.0,
+    "mean_wage": 116620.0
+   }
+  },
+  "UT": {
+   "engineers": {
+    "employment": null,
+    "mean_wage": null
+   },
+   "technicians": {
+    "employment": null,
+    "mean_wage": null
+   }
+  },
+  "VT": {
+   "engineers": {
+    "employment": null,
+    "mean_wage": null
+   },
+   "technicians": {
+    "employment": null,
+    "mean_wage": null
+   }
+  },
+  "VA": {
+   "engineers": {
+    "employment": null,
+    "mean_wage": 132710.0
+   },
+   "technicians": {
+    "employment": 680.0,
+    "mean_wage": 105290.0
+   }
+  },
+  "WA": {
+   "engineers": {
+    "employment": 1380.0,
+    "mean_wage": 136540.0
+   },
+   "technicians": {
+    "employment": 90.0,
+    "mean_wage": 108370.0
+   }
+  },
+  "WV": {
+   "engineers": {
+    "employment": null,
+    "mean_wage": null
+   },
+   "technicians": {
+    "employment": null,
+    "mean_wage": null
+   }
+  },
+  "WI": {
+   "engineers": {
+    "employment": null,
+    "mean_wage": null
+   },
+   "technicians": {
+    "employment": null,
+    "mean_wage": null
+   }
+  },
+  "WY": {
+   "engineers": {
+    "employment": null,
+    "mean_wage": null
+   },
+   "technicians": {
+    "employment": null,
+    "mean_wage": null
+   }
+  }
+ }
+}
